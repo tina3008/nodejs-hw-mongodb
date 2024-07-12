@@ -5,7 +5,7 @@ import cors from 'cors';
 //  import { env } from './utils/env.js';
 
 const PORT = process.env.PORT;
-console.log('port is', process.env.PORT);
+console.log('port is', PORT);
 
 export const setupServer = () => {
   const app = express();
