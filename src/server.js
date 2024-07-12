@@ -1,10 +1,13 @@
+import 'dotenv/config';
 import express from 'express';
 import pino from 'pino-http';
 import cors from 'cors';
+//  import { env } from './utils/env.js';
 
-const PORT = 8080;
+const PORT = process.env.PORT;
+console.log('port is', process.env.PORT);
 
-export const startServer = () => {
+export const setupServer = () => {
   const app = express();
 
   app.use(express.json());
@@ -19,27 +22,25 @@ export const startServer = () => {
   );
 
   app.get('/', (req, res) => {
-    // res.json({
-    //   message: 'Hello world!++',
-    // });
-    res.send("+++")
+    res.json({
+      message: 'Hello world!',
+    });
   });
 
   app.use('*', (req, res, next) => {
-    // res.status(404).json({
-    //   message: 'Not found++',
-    // });
-    res.send("err404+++")
+    res.status(404).json({
+      message: 'Page not found',
+    });
   });
 
   app.use((err, req, res, next) => {
     res.status(500).json({
-      message: 'Something went wrong',
+      message: 'Server error',
       error: err.message,
     });
   });
 
-  app.listen(8080, () => {
-    console.log(`Server is running on port 8080`);
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
   });
 };
