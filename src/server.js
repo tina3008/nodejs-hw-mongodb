@@ -2,7 +2,6 @@ import { env } from './utils/env.js';
 import express from 'express';
 import pino from 'pino-http';
 import cors from 'cors';
-// import { initMongoConnection } from './db/initMongoConnection.js';
 
 import { getAllContacts, getContactById } from './services/conacts.js';
 
@@ -33,7 +32,7 @@ export const setupServer = () => {
 
     res.json({
       status: 200,
-      message: "Successfully found contacts!",
+      message: 'Successfully found contacts!',
       data: contacts,
     });
   });
