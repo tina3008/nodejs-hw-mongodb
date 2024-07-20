@@ -28,12 +28,11 @@ export const getContactIDController = async (req, res, next) => {
 
 export const createContactController = async (req, res) => {
   const contact = await createContact(req.body);
-  res.status(200).json({
-    status: 200,
+  res.status(201).json({
+    status: 201,
     message: 'Successfully created a contact!',
     data: contact,
   });
-
 };
 
 export const deleteContactController = async (req, res, next) => {
@@ -45,10 +44,7 @@ export const deleteContactController = async (req, res, next) => {
    throw createHttpError(404, 'Contact not found');
   }
 
-  res.status(204).send({status: 200,
-	message: "Successfully patched a contact!",
-    data: contact
-  });
+  res.status(204).send();
 };
 
 export const changeContactController = async (req, res, next) => {
