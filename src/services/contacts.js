@@ -18,7 +18,7 @@ function deleteContact(contactId) {
   return ContactsCollection.findByIdAndDelete(contactId);
 };
 
- function patchContact = async (contactId, payload ) => {
+const patchContact = async (contactId, payload ) => {
   const rawResult = await ContactsCollection.findOneAndUpdate(
     { _id: contactId },
     payload,
@@ -39,5 +39,5 @@ export {
   getContactById,
   createContact,
   deleteContact,
-  // patchContact,
+   patchContact,
 };
