@@ -1,7 +1,66 @@
 import ContactsCollection from '../db/models/contact.js';
+import { calculatePaginationData } from '../utils/calculatePaginationData.js';
+import { SORT_ORDER } from '../constants/index.js';
 
-function getAllContacts () {
-  return ContactsCollection.find();
+// function getAllContacts({ page, perPage }) {
+//   const limit = perPage;
+//   const skip = (page - 1) * perPage;
+
+//   const contactQuery = ContactsCollection.find();
+//    const contactCount = ContactsCollection.find()
+//     .merge(contactQuery)
+//      .countDocuments();
+//     const contacts =  contactQuery.skip(skip).limit(limit).exec();
+
+//   const paginationData = calculatePaginationData(contactCount, perPage, page);
+
+//   return {
+//     data: contacts,
+//     ...paginationData,
+//   };
+
+// };
+const getAllContacts = async ({
+  page = 1,
+  perPage = 10,
+  sortOrder = SORT_ORDER.ASC,
+  sortBy = '_id',
+  filter = {},
+}) => {
+  const limit = perPage;
+  const skip = (page - 1) * perPage;
+
+  const contactsQuery = ContactsCollection.find();
+
+    if (filter.isFavourite) {
+      contactsQuery.where('isFavourite').equals(filter.isFavourite);
+    }
+
+  // const contactsCount = await ContactsCollection.find()
+  //   .merge(contactsQuery)
+  //   .countDocuments();
+
+  // const contacts = await contactsQuery
+  //   .skip(skip)
+  //   .limit(limit)
+  //   .sort({ [sortBy]: sortOrder })
+  //   .exec();
+
+  const [contactsCount, contacts] = await Promise.all([
+    ContactsCollection.find().merge(contactsQuery).countDocuments(),
+    contactsQuery
+      .skip(skip)
+      .limit(limit)
+      .sort({ [sortBy]: sortOrder })
+      .exec(),
+  ]);
+
+  const paginationData = calculatePaginationData(contactsCount, perPage, page);
+
+  return {
+    data: contacts,
+    ...paginationData,
+  };
 };
 
 function getContactById(contactId)  {
