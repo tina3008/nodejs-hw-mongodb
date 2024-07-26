@@ -55,10 +55,15 @@ function deleteContact(contactId) {
   return ContactsCollection.findByIdAndDelete(contactId);
 };
 
-const patchContact = async (contactId, payload ) => {
+const patchContact = async (contactId, payload, options) => {
   const rawResult = await ContactsCollection.findOneAndUpdate(
     { _id: contactId },
     payload,
+    {
+      new: true,
+      includeResultMetadata: true,
+      ...options,
+    },
   );
 
   if (!rawResult || !rawResult.value) return null;
