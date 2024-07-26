@@ -37,7 +37,7 @@ router.delete(
 );
 router.patch(
   '/contacts/:contactId',
-
+jsonParser,
  validateBody(schemaContact),
   ctrlWrapper(changeContactController),
 );
