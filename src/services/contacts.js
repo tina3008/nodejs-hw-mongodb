@@ -23,16 +23,6 @@ const getAllContacts = async ({
 // }
 
 
-  // const contactsCount = await ContactsCollection.find()
-  //   .merge(contactsQuery)
-  //   .countDocuments();
-
-  // const contacts = await contactsQuery
-  //   .skip(skip)
-  //   .limit(limit)
-  //   .sort({ [sortBy]: sortOrder })
-  //   .exec();
-
   const [contactsCount, contacts] = await Promise.all([
     ContactsCollection.find().merge(contactsQuery).countDocuments(),
     contactsQuery
@@ -65,10 +55,15 @@ function deleteContact(contactId) {
   return ContactsCollection.findByIdAndDelete(contactId);
 };
 
-const patchContact = async (contactId, payload ) => {
+const patchContact = async (contactId, payload, options) => {
   const rawResult = await ContactsCollection.findOneAndUpdate(
     { _id: contactId },
     payload,
+    {
+      new: true,
+      includeResultMetadata: true,
+      ...options,
+    },
   );
 
   if (!rawResult || !rawResult.value) return null;
