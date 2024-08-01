@@ -20,7 +20,7 @@ async function register(req, res) {
 async function login(req, res) {
   const session = await loginUser(req.body);
 
-  res.cookies('refreshToken', session.refreshToken, {
+  res.cookie('refreshToken', session.refreshToken, {
     httpOnly: true,
     expires: new Date(Date.now() + ONE_DAY),
   });
@@ -29,18 +29,24 @@ async function login(req, res) {
     expires: new Date(Date.now() + ONE_DAY),
   });
 
-  res.status(200).json({
-    status: 200,
-    message: 'Successfully logged in an user!',
-    data: session,
-  });
-}
+res.json({
+  status: 200,
+  message: 'Successfully logged in an user!',
+  data: {
+    accessToken: session.accessToken,
+  },
+});
+};
 
 async function logout(req, res) {
-  if (req.cookies.sessionId) { await logoutUser(req.cookies.sessionId); };
-  res.clearCoockie('sessionId');
-  res.clearCoockie('refreshToken');
-  res.status(200).send();
+  if (req.cookies.sessionId) {
+    await logoutUser(req.cookies.sessionId);
+  };
+
+  res.clearCookie('sessionId');
+  res.clearCookie('refreshToken');
+
+  res.status(204).send();
 };
 
 const setupSession = (res, session) => {
@@ -70,4 +76,5 @@ export const refreshSessionController = async (req, res) => {
     },
   });
 };
+
 export { register, login, logout };
