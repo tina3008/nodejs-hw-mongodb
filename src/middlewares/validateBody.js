@@ -15,7 +15,6 @@ export function validateBody(schema) {
           400,
           error.details.map((err) => err.message).join(', '),
         ),
-
       );
     }
   };
