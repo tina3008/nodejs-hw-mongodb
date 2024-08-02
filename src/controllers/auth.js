@@ -10,10 +10,17 @@ import { ONE_DAY } from '../constants/index.js';
 async function register(req, res) {
   const registeredUser = await registerUser(req.body);
 
-  res.status(200).json({
-    status: 200,
-    message: 'User registered',
-    data: registeredUser,
+  res.status(201).json({
+    status: 201,
+    message: 'Successfully registered a user!',
+    // data: registeredUser,
+    data: {
+      name: registeredUser.name,
+      email: registeredUser.email,
+      id: registeredUser._id,
+      createdAt:registeredUser.createdAt,
+      updatedAt:registeredUser.updatedAt,
+    },
   });
 }
 
