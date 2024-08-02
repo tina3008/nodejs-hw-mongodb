@@ -1,4 +1,4 @@
-import { Router, json } from 'express';
+import { Router } from 'express';
 import {
   register,
   login,
@@ -14,7 +14,6 @@ const router = Router();
 
 router.post(
   '/register',
-  // jsonParser,
   validateBody(validUserSchema),
   ctrlWrapper(register),
 );

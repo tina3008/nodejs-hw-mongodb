@@ -32,7 +32,7 @@ router.get(
 
 router.post(
   '/',
-  checkRoles(ROLES.AUTOR),
+  // checkRoles(ROLES.AUTOR),
   jsonParser,
   validateBody(schemaContact),
   ctrlWrapper(createContactController),
