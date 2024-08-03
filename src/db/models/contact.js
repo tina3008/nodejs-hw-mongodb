@@ -1,6 +1,6 @@
-import mongoose, { Schema } from 'mongoose';
+import { model, Schema } from 'mongoose';
 
-const contactsSchema = new mongoose.Schema(
+const contactsSchema = new Schema(
   {
     name: {
       type: String,
@@ -35,5 +35,5 @@ const contactsSchema = new mongoose.Schema(
   },
 );
 
- const ContactsCollection = mongoose.model('contacts', contactsSchema);
-export default ContactsCollection ;
+const ContactsCollection = model('contacts', contactsSchema);
+export default ContactsCollection;
