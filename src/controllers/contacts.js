@@ -46,14 +46,13 @@ export const getContactIDController = async (req, res, next) => {
 };
 
 export const createContactController = async (req, res) => {
-
   const contactFields = {
     name: req.body.name,
     phoneNumber: req.body.phoneNumber,
     email: req.body.email,
     isFavourite: req.body.isFavourite,
     contactType: req.body.contactType,
-    userId:req.user._id
+    userId: req.user._id,
   };
   const contact = await createContact(contactFields);
   res.status(200).json({
@@ -72,13 +71,11 @@ export const deleteContactController = async (req, res) => {
     throw createHttpError(404, 'Contact not found');
   }
 
-  res
-    .status(201)
-    .send({
-      status: 201,
-      message: 'Successfully patched a contact!',
-      data: contact,
-    });
+  res.status(201).send({
+    status: 201,
+    message: 'Successfully patched a contact!',
+    data: contact,
+  });
 };
 
 export const changeContactController = async (req, res, next) => {
