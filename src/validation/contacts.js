@@ -20,5 +20,5 @@ export const schemaContact = Joi.object({
   isFavourite: Joi.boolean(),
 
   contactType: Joi.string().valid('work', 'home', 'personal').required(),
-  userId: Joi.string().required(),
+  // userId: Joi.string().required(),
 });
