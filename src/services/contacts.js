@@ -42,8 +42,8 @@ const getAllContacts = async ({
   };
 };
 
-function getContactById(contactId)  {
-  return ContactsCollection.findById(contactId);
+function getContactById(contactId, userId)  {
+  return ContactsCollection.findOne({_id: contactId, userId});
 
 };
 
@@ -52,13 +52,13 @@ function createContact  (contact)  {
  return ContactsCollection.create(contact);
 };
 
-function deleteContact(contactId) {
-  return ContactsCollection.findByIdAndDelete(contactId);
+function deleteContact(contactId, userId) {
+  return ContactsCollection.findOneAndDelete({ _id: contactId, userId });
 };
 
-const patchContact = async (contactId, payload, options) => {
+const patchContact = async (contactId, userId, payload, options ) => {
   const rawResult = await ContactsCollection.findOneAndUpdate(
-    { _id: contactId },
+    { _id: contactId, userId },
     payload,
     {
       new: true,
@@ -68,7 +68,7 @@ const patchContact = async (contactId, payload, options) => {
   );
 
   if (!rawResult || !rawResult.value) return null;
-
+  console.log(rawResult._id);
   return {
     contact: rawResult.value,
     isNew: Boolean(rawResult?.lastErrorObject?.upserted),
