@@ -4,9 +4,14 @@ import {
   login,
   logout,
   refreshSessionController,
+  requestResetEmailController,
 } from '../controllers/auth.js';
 import { ctrlWrapper } from '../middlewares/ctrlWrapper.js';
-import { validUserSchema, loginSchema } from '../validation/auth.js';
+import {
+  validUserSchema,
+  loginSchema,
+  requestResetEmailSchema,
+} from '../validation/auth.js';
 import { validateBody } from '../middlewares/validateBody.js';
 import { requestResetEmailSchema } from '../validation/auth.js';
 import { requestResetEmailController } from '../controllers/auth.js';
@@ -26,5 +31,7 @@ router.post(
   validateBody(requestResetEmailSchema),
   ctrlWrapper(requestResetEmailController),
 );
+
+router.post('/request-reset-email', validateBody(requestResetEmailSchema), ctrlWrapper( requestResetEmailController));
 
 export default router;

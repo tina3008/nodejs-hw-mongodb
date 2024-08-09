@@ -14,7 +14,7 @@ const PORT = Number(env('PORT', '3000'));
 export const setupServer = () => {
   const app = express();
 
-  app.use(express.json({ type: ['application/json'] }));
+   app.use(express.json({ type: ['application/json'] }));
   app.use(cors());
  app.use(cookieParser());
   app.use(
