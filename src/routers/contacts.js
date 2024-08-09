@@ -16,7 +16,7 @@ import { checkRoles } from '../middlewares/checkRoles.js';
 import { ROLES } from '../constants/index.js';
 
 const router = Router();
-const jsonParser = express.json();
+// const jsonParser = express.json();
 
 router.use(authenticate);
 
@@ -34,7 +34,7 @@ router.post(
   '/',
   // checkRoles(ROLES.AUTOR),
 
-  jsonParser,
+  // jsonParser,
   validateBody(schemaContact),
   ctrlWrapper(createContactController),
 );
