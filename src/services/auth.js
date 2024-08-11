@@ -93,30 +93,6 @@ export const refreshSession = async ({ sessionId, refreshToken }) => {
   });
 };
 
-// export const requestResetToken = async (email) => {
-//   const user = await UsersCollection.findOne({ email });
-//     if (user === null) {
-//       throw createHttpError(404, 'User not found');
-//     }
-
-//   const resetToken = jwt.sign(
-//     {
-//       sub: user._id,
-//       email: user.email,
-//     },
-//     process.env.JWT_SECRET,
-//     {
-//       expiresIn: '5m',
-//     },
-//   );
-//   await sendEmail({
-//     from: env(SMTP.SMTP_FROM),
-//     // to: 'kicja_3@ukr.net',
-//     to: email,
-//     subject: 'Reset your password',
-//     html: `<p>https://${SMTP.SMTP_HOST}/reset-password?token=${resetToken}</p>`,
-//   });
-// };
 
 export const requestResetToken = async (email) => {
   const user = await UsersCollection.findOne({ email });
