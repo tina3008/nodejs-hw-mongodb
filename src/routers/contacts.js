@@ -27,14 +27,13 @@ router.get(
   '/:contactId',
 
   checkRoles(ROLES.AUTOR),
-  // upload.single('photo'),
   isValidID,
   ctrlWrapper(getContactIDController),
 );
 
 router.post(
   '/',
-  
+
   validateBody(schemaContact),
   ctrlWrapper(createContactController),
 );
