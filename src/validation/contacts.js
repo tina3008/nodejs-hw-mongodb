@@ -7,7 +7,6 @@ export const schemaContact = Joi.object({
     .min(3)
     .max(20)
     .pattern(/[+*0-9]{3,20}$/),
-  // .validate('1234567890+-()')
 
   email: Joi.string()
     .min(3)
@@ -20,5 +19,4 @@ export const schemaContact = Joi.object({
   isFavourite: Joi.boolean(),
 
   contactType: Joi.string().valid('work', 'home', 'personal').required(),
-
 });
