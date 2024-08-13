@@ -34,13 +34,12 @@ router.get(
 
 router.post(
   '/',
-  upload.single('photo'),
+  
   validateBody(schemaContact),
   ctrlWrapper(createContactController),
 );
 router.delete(
   '/:contactId',
-
   isValidID,
   checkRoles(ROLES.AUTOR),
   ctrlWrapper(deleteContactController),
