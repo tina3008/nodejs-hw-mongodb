@@ -33,7 +33,7 @@ router.get(
 
 router.post(
   '/',
-
+  upload.single('photo'),
   validateBody(schemaContact),
   ctrlWrapper(createContactController),
 );
