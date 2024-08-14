@@ -1,7 +1,7 @@
 import Joi from 'joi';
 
 export const schemaContact = Joi.object({
-  name: Joi.string().min(3).max(20).required(),
+  name: Joi.string().min(3).max(20),
 
   phoneNumber: Joi.string()
     .min(3)
@@ -18,5 +18,5 @@ export const schemaContact = Joi.object({
 
   isFavourite: Joi.boolean(),
 
-  contactType: Joi.string().valid('work', 'home', 'personal').required(),
+  contactType: Joi.string().valid('work', 'home', 'personal'),
 });
