@@ -9,7 +9,10 @@ import {
 } from '../controllers/contacts.js';
 import { ctrlWrapper } from '../middlewares/ctrlWrapper.js';
 import { validateBody } from '../middlewares/validateBody.js';
-import { schemaContact } from '../validation/contacts.js';
+import {
+  schemaContactPost,
+  schemaContactPatch,
+} from '../validation/contacts.js';
 import { isValidID } from '../middlewares/isValidId.js';
 import { authenticate } from '../middlewares/authenticate.js';
 import { checkRoles } from '../middlewares/checkRoles.js';
@@ -34,7 +37,7 @@ router.get(
 router.post(
   '/',
   upload.single('photo'),
-  validateBody(schemaContact),
+  validateBody(schemaContactPost),
   ctrlWrapper(createContactController),
 );
 router.delete(
@@ -47,7 +50,7 @@ router.patch(
   '/:contactId',
   upload.single('photo'),
   checkRoles(ROLES.AUTOR),
-  validateBody(schemaContact),
+  validateBody(schemaContactPatch),
   ctrlWrapper(changeContactController),
 );
 
