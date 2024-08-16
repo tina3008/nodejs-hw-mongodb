@@ -70,7 +70,7 @@ export const createContactController = async (req, res) => {
     photo: photoUrl,
   };
   const contact = await createContact(contactFields);
-  res.status(200).json({
+  res.status(201).json({
     status: 201,
     message: 'Successfully created a contact!',
     data: contact,
@@ -86,8 +86,8 @@ export const deleteContactController = async (req, res) => {
     throw createHttpError(404, 'Contact not found');
   }
 
-  res.status(201).send({
-    status: 201,
+  res.status(204).send({
+    status: 204,
     message: 'Successfully patched a contact!',
     data: contact,
   });
