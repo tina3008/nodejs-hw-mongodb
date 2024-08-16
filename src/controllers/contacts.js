@@ -86,11 +86,7 @@ export const deleteContactController = async (req, res) => {
     throw createHttpError(404, 'Contact not found');
   }
 
-  res.status(204).send({
-    status: 204,
-    message: 'Successfully patched a contact!',
-    data: contact,
-  });
+  res.status(204).send();
 };
 
 export const changeContactController = async (req, res, next) => {
