@@ -1,20 +1,22 @@
 tags:
   - Contacts
-summary: Create contact
-operationId: createContact
-description: 'Create a contact with payload'
+summary: Change contact by ID
+operationId: ChangeContact
+description: 'Change a contact by ID'
 security:
   - bearerAuth: []
+parameters:
+  - in: path
+    name: id
+    required: true
+    schema:
+      type: string
+      example: 6692528c222b4be7b4b17ebd
 requestBody:
   content:
     multipart/form-data:
       schema:
         type: object
-        required:
-          - name
-          - phoneNumber
-          - contactType
-          - userId
         properties:
           name:
             definitions: "full name"
@@ -53,8 +55,8 @@ requestBody:
             type: string
             example: "https://res.cloudinary.com/dzcis7rfr/image/upload/v1723708555/yikknimm…"
 responses:
-  '201':
-    description: Creates a contact
+  '200':
+    description: Change a contact
     content:
       application/json:
         schema:
@@ -66,12 +68,12 @@ responses:
           properties:
             status:
               type: integer
-              example: 201
+              example: 200
             message:
               type: string
-              example: Successfully created a contact!
+              example: Successfully changed a contact!
             data:
               type: object
-              $ref: ..\..\components\schemas\contacts.yaml
+              $ref: ..\..\..\components\schemas\contacts.yaml
   '404':
-    $ref: '../../components/responses/404.yaml'
+    $ref: ..\..\..\components\responses\401.yaml
