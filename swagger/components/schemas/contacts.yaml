@@ -7,11 +7,11 @@ required:
   - userId
 properties:
     _id:
-      definitions: "contact's ID"
+      definitions: "Contact's ID"
       type: string
       example: 6692528c222b4be7b4b17ebd
     name:
-      definitions: "ful name"
+      definitions: "full name"
       type: string
       example: dddhh aayyz
 
@@ -21,7 +21,7 @@ properties:
       example: +380000000002
 
     email:
-      definitions: "contact's phone number"
+      definitions: "contact's email"
       type: string
       example: "qwee3@example.com"
 
@@ -45,4 +45,4 @@ properties:
     photo:
       description: "Link to contact's photo"
       type: string
-      example: "https://res.cloudinary.com/dzcis7rfr/image/upload/v1723708555/yikknimm…"
+      format: binary
