@@ -17,12 +17,12 @@ servers:
   - url: https://nodejs-hw-mongodb-4-3qmt.onrender.com/
 paths:
 
-  /contact:
+  /contacts:
     get:
-      $ref: ..\swagger\paths\contacts\get.yaml
+      $ref: ../swagger/paths/contacts/get.yaml
     post:
       $ref: ..\swagger\paths\contacts\post.yaml
-  /contact/{id}:
+  /contacts/{id}:
     get:
       $ref: ..\swagger\paths\contacts\{id}\get.yaml
     delete:

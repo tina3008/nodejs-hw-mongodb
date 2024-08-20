@@ -1,7 +1,7 @@
 tags:
   - Contacts
 summary: Get scontact by id
-operationId: getContact
+operationId: getContactIDController
 description: 'Get contact by id'
 security:
   - bearerAuth: []

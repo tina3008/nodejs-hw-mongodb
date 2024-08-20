@@ -28,7 +28,7 @@
     }
   ],
   "paths": {
-    "/contact": {
+    "/contacts": {
       "get": {
         "tags": [
           "Contacts"
@@ -77,14 +77,6 @@
                 "desc"
               ],
               "example": "asc"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter",
-            "schema": {
-              "type": "string",
-              "example": "Filter by field"
             }
           },
           {
@@ -231,11 +223,6 @@
                     ],
                     "default": "personal"
                   },
-                  "userId": {
-                    "definitions": "Autorth's contact ID",
-                    "type": "string",
-                    "example": "6692528c222b4be7b4b17ebd"
-                  },
                   "photo": {
                     "description": "Link to contact's photo",
                     "type": "string",
@@ -282,13 +269,13 @@
         }
       }
     },
-    "/contact/{id}": {
+    "/contacts/{id}": {
       "get": {
         "tags": [
           "Contacts"
         ],
         "summary": "Get scontact by id",
-        "operationId": "getContact",
+        "operationId": "getContactIDController",
         "description": "Get contact by id",
         "security": [
           {
@@ -378,7 +365,7 @@
           "Contacts"
         ],
         "summary": "Change contact by ID",
-        "operationId": "PatchContact",
+        "operationId": "ChangeContact",
         "description": "Change a contact by ID",
         "security": [
           {
@@ -432,11 +419,6 @@
                       "personal"
                     ],
                     "default": "personal"
-                  },
-                  "userId": {
-                    "definitions": "Autorth's contact ID",
-                    "type": "string",
-                    "example": "6692528c222b4be7b4b17ebd"
                   },
                   "photo": {
                     "description": "Link to contact's photo",
@@ -1173,11 +1155,6 @@
             "definitions": "User's email",
             "type": "string",
             "example": "qwee3@example.com"
-          },
-          "role": {
-            "definitions": "User's role",
-            "type": "string",
-            "example": "6692528c222b4be7b4b17ebd"
           }
         }
       }
