@@ -14,7 +14,7 @@ requestBody:
           - name
           - phoneNumber
           - contactType
-          - userId
+
         properties:
           name:
             definitions: "full name"
@@ -43,9 +43,10 @@ requestBody:
             enum: ['work', 'home', 'personal']
             default: 'personal'
           photo:
-            description: "Link to contact's photo"
+            description: "The file to upload"
             type: string
-            example: "https://res.cloudinary.com/dzcis7rfr/image/upload/v1723708555/yikknimm…"
+            format: binary
+            example: "https://res.cloudinary.com/dzcis7rfr/image/upload/v1723708555"
 responses:
   '201':
     description: Creates a contact

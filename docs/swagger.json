@@ -188,8 +188,7 @@
                 "required": [
                   "name",
                   "phoneNumber",
-                  "contactType",
-                  "userId"
+                  "contactType"
                 ],
                 "properties": {
                   "name": {
@@ -224,9 +223,10 @@
                     "default": "personal"
                   },
                   "photo": {
-                    "description": "Link to contact's photo",
+                    "description": "The file to upload",
                     "type": "string",
-                    "example": "https://res.cloudinary.com/dzcis7rfr/image/upload/v1723708555/yikknimm…"
+                    "format": "binary",
+                    "example": "https://res.cloudinary.com/dzcis7rfr/image/upload/v1723708555"
                   }
                 }
               }
@@ -421,8 +421,9 @@
                     "default": "personal"
                   },
                   "photo": {
-                    "description": "Link to contact's photo",
+                    "description": "Contact's photo to download",
                     "type": "string",
+                    "format": "binary",
                     "example": "https://res.cloudinary.com/dzcis7rfr/image/upload/v1723708555/yikknimm…"
                   }
                 }
