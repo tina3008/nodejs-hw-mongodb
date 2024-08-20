@@ -19,7 +19,4 @@ properties:
       type: string
       example: "qwee3@example.com"
 
-    role:
-      definitions: "User's role"
-      type: string
-      example: 6692528c222b4be7b4b17ebd
+

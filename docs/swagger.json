@@ -34,7 +34,7 @@
           "Contacts"
         ],
         "summary": "Get all contacts",
-        "operationId": "getContacts",
+        "operationId": "getContactsController",
         "description": "Get list of users with this endpoint",
         "security": [
           {
@@ -378,7 +378,7 @@
           "Contacts"
         ],
         "summary": "Change contact by ID",
-        "operationId": "ChangeContact",
+        "operationId": "PatchContact",
         "description": "Change a contact by ID",
         "security": [
           {

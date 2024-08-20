@@ -29,11 +29,6 @@ parameters:
       enum: ['asc', 'desc']
       example: 'asc'
   - in: query
-    name: filter
-    schema:
-      type: string
-      example: "Filter by field"
-  - in: query
     name:  contactType
     schema:
       type: string
