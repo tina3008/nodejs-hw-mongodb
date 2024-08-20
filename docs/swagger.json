@@ -28,7 +28,7 @@
     }
   ],
   "paths": {
-    "/contact": {
+    "/contacts": {
       "get": {
         "tags": [
           "Contacts"
@@ -77,14 +77,6 @@
                 "desc"
               ],
               "example": "asc"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter",
-            "schema": {
-              "type": "string",
-              "example": "Filter by field"
             }
           },
           {
@@ -196,8 +188,7 @@
                 "required": [
                   "name",
                   "phoneNumber",
-                  "contactType",
-                  "userId"
+                  "contactType"
                 ],
                 "properties": {
                   "name": {
@@ -231,15 +222,11 @@
                     ],
                     "default": "personal"
                   },
-                  "userId": {
-                    "definitions": "Autorth's contact ID",
-                    "type": "string",
-                    "example": "6692528c222b4be7b4b17ebd"
-                  },
                   "photo": {
-                    "description": "Link to contact's photo",
+                    "description": "The file to upload",
                     "type": "string",
-                    "example": "https://res.cloudinary.com/dzcis7rfr/image/upload/v1723708555/yikknimm…"
+                    "format": "binary",
+                    "example": "https://res.cloudinary.com/dzcis7rfr/image/upload/v1723708555"
                   }
                 }
               }
@@ -282,13 +269,13 @@
         }
       }
     },
-    "/contact/{id}": {
+    "/contacts/{id}": {
       "get": {
         "tags": [
           "Contacts"
         ],
         "summary": "Get scontact by id",
-        "operationId": "getContact",
+        "operationId": "getContactIDController",
         "description": "Get contact by id",
         "security": [
           {
@@ -378,7 +365,7 @@
           "Contacts"
         ],
         "summary": "Change contact by ID",
-        "operationId": "PatchContact",
+        "operationId": "ChangeContact",
         "description": "Change a contact by ID",
         "security": [
           {
@@ -433,14 +420,10 @@
                     ],
                     "default": "personal"
                   },
-                  "userId": {
-                    "definitions": "Autorth's contact ID",
-                    "type": "string",
-                    "example": "6692528c222b4be7b4b17ebd"
-                  },
                   "photo": {
-                    "description": "Link to contact's photo",
+                    "description": "Contact's photo to download",
                     "type": "string",
+                    "format": "binary",
                     "example": "https://res.cloudinary.com/dzcis7rfr/image/upload/v1723708555/yikknimm…"
                   }
                 }
@@ -1173,11 +1156,6 @@
             "definitions": "User's email",
             "type": "string",
             "example": "qwee3@example.com"
-          },
-          "role": {
-            "definitions": "User's role",
-            "type": "string",
-            "example": "6692528c222b4be7b4b17ebd"
           }
         }
       }

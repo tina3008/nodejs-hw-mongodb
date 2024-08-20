@@ -16,7 +16,7 @@ export const setupServer = () => {
   const app = express();
 
   app.use('/uploads', express.static(UPLOAD_DIR));
-  app.use('/api-docs', swaggerDocs());
+
   app.use(express.json({ type: ['application/json'] }));
   app.use(cors());
   app.use(cookieParser());
@@ -34,7 +34,7 @@ export const setupServer = () => {
       message: 'Hello World!',
     });
   });
-
+ app.use('/api-docs', swaggerDocs());
   // routers
   app.use(router);
 
