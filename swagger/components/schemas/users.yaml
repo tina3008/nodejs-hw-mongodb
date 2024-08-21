@@ -18,5 +18,9 @@ properties:
       definitions: "User's email"
       type: string
       example: "qwee3@example.com"
+    password:
+      definitions: "User's email"
+      type: string
+      example: "grgr325"
 
 
