@@ -17,7 +17,7 @@ export const checkRoles =
     if (roles.includes(ROLES.AUTOR) && role === ROLES.AUTOR) {
       const { contactId } = req.params;
       if (!contactId) {
-        next(createHttpError(403));
+        next(createHttpError(404));
         return;
       }
 
@@ -32,5 +32,5 @@ export const checkRoles =
       }
     }
 
-    next(createHttpError(403));
+    next(createHttpError(404));
   };
