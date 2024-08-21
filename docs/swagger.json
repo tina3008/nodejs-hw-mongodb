@@ -323,6 +323,9 @@
               }
             }
           },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
           "404": {
             "$ref": "#/components/responses/404"
           }
@@ -461,8 +464,11 @@
               }
             }
           },
+          "403": {
+            "$ref": "#/components/responses/403"
+          },
           "404": {
-            "$ref": "#/components/responses/401"
+            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -1081,11 +1087,6 @@
             ],
             "default": "personal"
           },
-          "userId": {
-            "definitions": "Autorth's contact ID",
-            "type": "string",
-            "example": "6692528c222b4be7b4b17ebd"
-          },
           "photo": {
             "description": "Link to contact's photo",
             "type": "string",
@@ -1156,6 +1157,11 @@
             "definitions": "User's email",
             "type": "string",
             "example": "qwee3@example.com"
+          },
+          "password": {
+            "definitions": "User's email",
+            "type": "string",
+            "example": "grgr325"
           }
         }
       }
@@ -1190,6 +1196,43 @@
                     "message": {
                       "type": "string",
                       "example": "Access token expired"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "403": {
+        "description": "Unauthorized error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "status",
+                "message",
+                "data"
+              ],
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 404
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Route not found"
+                },
+                "data": {
+                  "type": "object",
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Route not found"
                     }
                   }
                 }
