@@ -48,6 +48,7 @@ router.delete(
 );
 router.patch(
   '/:contactId',
+
   upload.single('photo'),
   checkRoles(ROLES.AUTOR),
   validateBody(schemaContactPatch),
