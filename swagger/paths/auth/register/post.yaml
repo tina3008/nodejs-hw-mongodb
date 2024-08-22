@@ -14,7 +14,6 @@ requestBody:
           - name
           - email
           - password
-          - role
         properties:
           name:
             definitions: "full name"
@@ -28,10 +27,6 @@ requestBody:
             definitions: "User's password"
             type: string
             example: frwer435
-          role:
-            definitions: "User's role"
-            type: string
-            example: 65e4decdd286b30065d54af9
 responses:
   '201':
     description: Registered a User
