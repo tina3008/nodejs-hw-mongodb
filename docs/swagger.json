@@ -740,8 +740,7 @@
                 "required": [
                   "name",
                   "email",
-                  "password",
-                  "role"
+                  "password"
                 ],
                 "properties": {
                   "name": {
@@ -758,11 +757,6 @@
                     "definitions": "User's password",
                     "type": "string",
                     "example": "frwer435"
-                  },
-                  "role": {
-                    "definitions": "User's role",
-                    "type": "string",
-                    "example": "65e4decdd286b30065d54af9"
                   }
                 }
               }
